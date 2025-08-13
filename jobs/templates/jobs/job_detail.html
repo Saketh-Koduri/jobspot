@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container mt-5">
+  <div class="card shadow">
+    <div class="card-body">
+      <h3 class="card-title">{{ job.title }}</h3>
+      <h5 class="card-subtitle mb-3 text-muted">Posted by {{ job.company.username }}</h5>
+      <p class="card-text">{{ job.description }}</p>
+      <hr>
+      <p><strong>Location:</strong> {{ job.location }}</p>
+      <p><strong>Type:</strong> {{ job.job_type }}</p>
+      <p><strong>Posted on:</strong> {{ job.created_at|date:"F j, Y" }}</p>
+
+      {% if user.is_authenticated and user.is_seeker %}
+      <a href="#" class="btn btn-success mt-3">Apply Now</a>
+      {% endif %}
+    </div>
+  </div>
+</div>
+{% endblock %}
